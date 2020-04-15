@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 
-bool AbstractFactory::can_create_unit(std::string unit) {
+bool AbstractFactory::can_create_unit(const std::string &unit) {
     int num = -1;
     for (int i = 0; i < 3; ++i) {
         if (price_name[i] == unit) num = i;
