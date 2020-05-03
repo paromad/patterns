@@ -4,11 +4,13 @@
 
 class AirFactory : public AbstractFactory {
 public:
-    Girl *create_girl();
+    Girl *create_girl() override;
 
-    Boy *create_boy();
+    Boy *create_boy() override;
 
-    Animal *create_animal();
+    Animal *create_animal() override;
+
+    ~AirFactory() override = default;
 };
 
 class AirGirl : public Girl {

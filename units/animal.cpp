@@ -15,3 +15,11 @@ bool Animal::treat() const {
 bool Animal::shield() const {
     return false;
 }
+
+double Animal::get_damage() const {
+    return damage_;
+}
+
+double Animal::get_health() const {
+    return health_;
+}

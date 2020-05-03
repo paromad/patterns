@@ -6,7 +6,11 @@ class Boy : public Unit {
 public:
     Boy();
 
-    bool treat() const;
+    bool treat() const override;
 
-    bool shield() const;
+    bool shield() const override;
+
+    double get_damage() const override;
+
+    double get_health() const override;
 };
