@@ -5,18 +5,15 @@ Girl::Girl() {
     speed_ = 20;
     protection_ = 5;
     price_ = 30;
+    name_of_unit = "girl";
 }
 
 bool Girl::treat() const {
     return false;
 }
 
-bool Girl::shield() const {
-    return false;
-}
-
 double Girl::get_damage() const {
-    return damage_ * health_ * odd;
+    return damage_ * health_ / odd;
 }
 
 double Girl::get_health() const {

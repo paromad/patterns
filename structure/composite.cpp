@@ -1,17 +1,23 @@
 #include "composite.h"
 
-Component::Component(Unit *a, Unit *b) {
+Component::Component(Unit *a) {
     self_ = a;
-    parent_ = b;
 }
 
 Component::~Component() {
     delete self_;
-    delete parent_;
 }
 
 bool Component::is_composite() {
     return false;
+}
+
+Leaf::Leaf(Unit *a) {
+    self_ = a;
+}
+
+bool Leaf::treat() const {
+    return self_->treat();
 }
 
 double Leaf::get_damage() const {
@@ -26,12 +32,20 @@ bool Composite::is_composite() {
     return true;
 }
 
-void Composite::add(Unit *a) {
+void Composite::add(Component *a) {
     children_.push_back(a);
 }
 
 void Composite::remove() {
     if (children_.size()) children_.pop_back();
+}
+
+bool Composite::treat() const {
+    bool treat = false;
+    for (int i= 0; i < children_.size(); ++i) {
+        treat = true;
+    }
+    return treat;
 }
 
 double Composite::get_damage() const {

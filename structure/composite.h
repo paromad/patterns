@@ -4,37 +4,43 @@
 #include <vector>
 
 class Component : public Unit {
-protected:
-    Unit *self_;
-    Unit *parent_;
 public:
-    Component(Unit *a, Unit *b = nullptr);
+    Unit *self_;
+
+    Component() {};
+
+    Component(Unit *a);
 
     ~Component() override;
-
-    virtual void add(Unit *) = 0;
-
-    virtual void remove() = 0;
 
     virtual bool is_composite();
 };
 
 class Leaf : public Component {
 public:
+    Leaf() = default;
+    Leaf(Unit *);
+
+    bool treat() const override;
+
     double get_damage() const override;
 
     double get_health() const override;
 };
 
 class Composite : public Component {
-protected:
-    std::vector<Unit *> children_;
 public:
+    std::vector<Component *> children_;
+
+    Composite() {};
+
     bool is_composite() override;
 
-    void add(Unit *) override;
+    void add(Component *);
 
-    void remove() override;
+    void remove();
+
+    bool treat() const override;
 
     double get_damage() const override;
 

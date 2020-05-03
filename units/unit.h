@@ -4,17 +4,20 @@
 
 class Unit {
 public:
-    const double odd = 0.05;
+    double odd = 20;
     double health_ = 100;
     double damage_ = 0;
     double speed_ = 0;
     const char *weapon_ = "";
     double protection_ = 0;
     double price_ = 0;
+    std::string name_of_unit;
+    std::string name;
+    int number_of_squad = 0;
+
+    Unit() : health_(100), weapon_("") {};
 
     virtual bool treat() const = 0;
-
-    virtual bool shield() const = 0;
 
     virtual ~Unit() = default;
 
