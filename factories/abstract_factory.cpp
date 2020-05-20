@@ -17,5 +17,5 @@ bool AbstractFactory::can_create_unit(const std::string &unit) {
 }
 
 void AbstractFactory::message() const {
-    std::cout << "Now you have" << money_ << "coins\n";
+    std::cout << "Now you have " << money_ << " coins.\n";
 }
